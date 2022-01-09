@@ -71,8 +71,10 @@ public class UI extends JFrame {
                     formatter.setMaximum(9);
                     formatter.setAllowsInvalid(true);
                     textFieldsSquares[i][j] = new JFormattedTextField(formatter);
+                    textFieldsSquares[i][j].setEditable(true);
                 } else {
                     textFieldsSquares[i][j] = new JTextField("" + sudoku[i][j].getValue());
+                    textFieldsSquares[i][j].setEditable(false);
                 }
                 textFieldsSquares[i][j].setFont(new Font("Verdana", Font.BOLD, 25));
                 textFieldsSquares[i][j].setPreferredSize(new Dimension(50,50));
@@ -135,7 +137,6 @@ public class UI extends JFrame {
                                 }
                             }
                         } catch (Exception ex) {
-                            System.out.println(ex);
                         }
                     }
                 });
@@ -220,7 +221,6 @@ public class UI extends JFrame {
                         textFieldsSquares[i][j].setBackground(new Color(255, 255, 255, 255));
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
                     isSolved = false;
                 }
             }
@@ -238,9 +238,12 @@ public class UI extends JFrame {
                 sudoku[i][j].updatePossibleValues();
                 if (sudoku[i][j].getValue() == 0) {
                     textFieldsSquares[i][j].setText("");
+                    textFieldsSquares[i][j].setEditable(true);
                 } else {
                     textFieldsSquares[i][j].setText("" + sudoku[i][j].getValue());
+                    textFieldsSquares[i][j].setEditable(false);
                 }
+                textFieldsSquares[i][j].setBackground(Color.WHITE);
             }
         }
     }
